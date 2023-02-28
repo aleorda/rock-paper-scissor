@@ -20,8 +20,10 @@ base = root.path("app")
 SITE_DIR = root()
 BASE_DIR = base()
 
-env = environ.Env(DEBUG=(bool, False), )
-environ.Env.read_env(os.path.join(SITE_DIR, '.env'))  # reading .env file
+env = environ.Env(
+    DEBUG=(bool, False),
+)
+environ.Env.read_env(os.path.join(SITE_DIR, ".env"))  # reading .env file
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -80,9 +82,9 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-_db_url = env.db(default='db.sqlite3')
+_db_url = env.db(default="db.sqlite3")
 DATABASES = {
-    'default': _db_url,
+    "default": _db_url,
 }
 
 
