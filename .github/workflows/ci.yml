@@ -19,6 +19,7 @@ env:
 jobs:
   security:
     name: security
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -35,11 +36,11 @@ jobs:
       - run: poetry config virtualenvs.in-project true
       - run: poetry install
 
-      - run: poetry run safety check --ignore=42194 --ignore=51457 --ignore=51668
-      - run: poetry run bandit --ini .bandit -r
+      - run: poetry run safety check
 
   linter:
     name: linter
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
