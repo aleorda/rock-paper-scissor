@@ -1,4 +1,9 @@
 # rock-paper-scissor
+![paper.svg](app%2Ffrontend%2Fstatic%2Fimages%2Fpaper.svg)
+![rock.svg](app%2Ffrontend%2Fstatic%2Fimages%2Frock.svg)
+![scissors.svg](app%2Ffrontend%2Fstatic%2Fimages%2Fscissors.svg)
+![lizard.svg](app%2Ffrontend%2Fstatic%2Fimages%2Flizard.svg)
+![spock.svg](app%2Ffrontend%2Fstatic%2Fimages%2Fspock.svg)
 
 ## Description
 
@@ -29,8 +34,8 @@ It has 2 different modes:
 
 - Python 3.10
 - Poetry
-- Docker
-- Docker Compose
+- Docker & Docker Compose
+- Make
 
 ### Setup - without Docker
 
