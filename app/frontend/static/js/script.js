@@ -71,7 +71,8 @@ function play(playerChoice){
         type: 'POST',
         url: '/api/play/',
         data: {
-            'action': playerChoice
+            'action': playerChoice,
+            'mode': 'classic',
         },
         dataType: 'json',
         success: function (data) {

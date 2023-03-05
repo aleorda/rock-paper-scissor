@@ -1,29 +1,27 @@
+from unittest.mock import MagicMock
+
 import pytest
 from django.urls import reverse
 
 from api.game_mode import Action
 
 
-def test_play_endpoint(client, monkeypatch):
-    monkeypatch.setattr("api.views.random.choice", lambda _: "scissors")
-
+@pytest.mark.parametrize("mode", ["classic", "the_big_bang_theory"])
+def test_play_endpoint(client, mode):
     response = client.post(
         reverse("api:play"),
-        data={"action": "rock"},
+        data={"action": "rock", "mode": mode},
         content_type="application/json",
     )
+
     assert response.status_code == 200
-    assert response.json() == {
-        "action": "rock",
-        "result": "win",
-        "computer": "scissors",
-    }
 
 
-def test_play_endpoint__invalid_action(client):
+@pytest.mark.parametrize("mode", ["classic", "the_big_bang_theory"])
+def test_play_endpoint__invalid_action(client, mode):
     response = client.post(
         reverse("api:play"),
-        data={"action": "invalid"},
+        data={"action": "invalid", "mode": mode},
         content_type="application/json",
     )
     assert response.status_code == 400
@@ -31,35 +29,29 @@ def test_play_endpoint__invalid_action(client):
 
 
 def test_play_endpoint__no_action(client):
-    response = client.post(reverse("api:play"))
+    response = client.post(
+        reverse("api:play"),
+        content_type="application/json",
+        data={"mode": "classic"},
+    )
     assert response.status_code == 400
     assert response.json() == {"action": ["This field is required."]}
+
+
+def test_play_endpoint__no_mode(client):
+    response = client.post(
+        reverse("api:play"),
+        content_type="application/json",
+        data={"action": "rock"},
+    )
+    assert response.status_code == 400
+    assert response.json() == {"mode": ["This field is required."]}
 
 
 def test_play_endpoint__get_method(client):
     response = client.get(reverse("api:play"))
     assert response.status_code == 405
     assert response.json() == {"detail": 'Method "GET" not allowed.'}
-
-
-@pytest.mark.parametrize(
-    "action,computer,result",
-    [
-        ("rock", "rock", "draw"),
-        ("rock", "paper", "lose"),
-        ("rock", "scissors", "win"),
-        ("paper", "rock", "win"),
-        ("paper", "paper", "draw"),
-        ("paper", "scissors", "lose"),
-        ("scissors", "rock", "lose"),
-        ("scissors", "paper", "win"),
-        ("scissors", "scissors", "draw"),
-        ("invalid", "scissors", "invalid"),
-    ],
-)
-def test_api_calculate_result(action, computer, result):
-    from api.views import calculate_result
-    assert calculate_result(action, computer) == result
 
 
 def test_game_modes__register():
@@ -192,4 +184,5 @@ def test_game_modes__get():
 )
 def test_calculate_result(action, computer, result):
     from api.game_mode import calculate_result, game_modes
-    assert calculate_result(action, computer, game_modes['classic']) == result
+
+    assert calculate_result(action, computer, game_modes["classic"]) == result

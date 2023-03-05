@@ -35,6 +35,9 @@ class GameModes:
     def __len__(self):
         return len(self.modes)
 
+    def __iter__(self):
+        return iter(self.modes.values())
+
 
 def calculate_result(player_action, computer_action, game_mode):
     if player_action not in [action.code for action in game_mode.actions]:
