@@ -2,6 +2,8 @@ let images = {
 	rock: window.origin + "/static/images/rock.svg",
 	paper: window.origin + "/static/images/paper.svg",
 	scissors: window.origin + "/static/images/scissors.svg",
+	lizard: window.origin + "/static/images/lizard.svg",
+	spock: window.origin + "/static/images/spock.svg",
 	question: window.origin + "/static/images/question_mark.png",
 };
 
