@@ -74,7 +74,7 @@ function play(playerChoice){
         url: '/api/play/',
         data: {
             'action': playerChoice,
-            'mode': 'classic',
+            'mode': window.gameMode,
         },
         dataType: 'json',
         success: function (data) {

@@ -1,4 +1,4 @@
-{% extends "base.html"
+{% extends "base.html" %}
 {% block title %}{{ game_mode.name }}{% endblock %}
 {% load static %}
 {% block content %}
@@ -65,9 +65,10 @@
     </div>
 </div>
 
-<script type="javascript">
-    window.gameMode = {{ game_mode }};
+<script type="text/javascript">
+    window.gameMode = "{{ game_mode.code }}";
 </script>
+
 {% endblock %}
 {% block scripts %}
 <script src="{% static 'js/script.js' %}"></script>
