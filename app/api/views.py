@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+
+def play(request):
+    return JsonResponse({"action": "rock", "result": "win", "computer": "scissors"})
