@@ -55,7 +55,7 @@ game_modes = GameModes()
 game_modes.register(
     GameMode(
         code="classic",
-        name="Classic",
+        name="Rock Paper Scissors",
         actions=[
             Action(code="rock", name="Rock", strong_to=["scissors"]),
             Action(code="paper", name="Paper", strong_to=["rock"]),

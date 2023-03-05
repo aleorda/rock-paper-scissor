@@ -98,7 +98,7 @@ def test_game_modes__registered():
 
     classic = game_modes["classic"]
     assert classic.code == "classic"
-    assert classic.name == "Classic"
+    assert classic.name == "Rock Paper Scissors"
 
     assert len(classic.actions) == 3
     assert classic.actions[0].code == "rock"
@@ -161,7 +161,7 @@ def test_game_modes__get():
     from api.game_mode import game_modes
 
     assert game_modes["classic"].code == "classic"
-    assert game_modes["classic"].name == "Classic"
+    assert game_modes["classic"].name == "Rock Paper Scissors"
     assert game_modes["the_big_bang_theory"].code == "the_big_bang_theory"
     assert game_modes["the_big_bang_theory"].name == "The Big Bang Theory"
     assert game_modes["invalid"] is None

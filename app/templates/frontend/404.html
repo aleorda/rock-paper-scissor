@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}404{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>404</h1>
+            <h2>Page not found</h2>
+            <p>Sorry, the page you are looking for does not exist.</p>
+            <a href="{% url 'frontend:index' %}">Go to home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -21,4 +21,6 @@ app_name = "frontend"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("404/", views.not_found, name="404_not_found"),
+    path("<str:game_mode_code>/", views.game, name="game"),
 ]

@@ -1,18 +1,18 @@
-{% extends "base.html" %}
-{% block title %}Rock Paper Scissors{% endblock %}
+{% extends "base.html"
+{% block title %}{{ game_mode.name }}{% endblock %}
 {% load static %}
 {% block content %}
 <main class="container">
     <header class="text-md-center">
-        <h1 class="p-t-1">Rock Paper Scissor</h1>
+        <h1 class="p-t-1">{{ game_mode.name }}</h1>
     </header>
     <hr>
     <section class="row d-flex justify-content-center">
         <div class="col-sm-6 col-md-offset-2">
             <div class="btn-group-flex m-b-1" role="group" aria-label="Player Choice Buttons" id="chooseBtns">
-                <button type="button" class="btn btn-secondary btn-choice" id="btnRock">Rock</button>
-                <button type="button" class="btn btn-secondary btn-choice" id="btnPaper">Paper</button>
-                <button type="button" class="btn btn-secondary btn-choice" id="btnScissors">Scissors</button>
+                {% for action in actions %}
+                     <button type="button" class="btn btn-secondary btn-choice" id="btn{{ action.name }}" data-action="{{ action.code }}">{{ action.name }}</button>
+                {% endfor %}
             </div>
             <div class="card" id="playerCard1">
                 <img class="card-img-top img-fluid p-a-1"
@@ -64,6 +64,10 @@
         </div>
     </div>
 </div>
+
+<script type="javascript">
+    window.gameMode = {{ game_mode }};
+</script>
 {% endblock %}
 {% block scripts %}
 <script src="{% static 'js/script.js' %}"></script>
