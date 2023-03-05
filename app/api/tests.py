@@ -1,4 +1,7 @@
+import pytest
 from django.urls import reverse
+
+from api.views import calculate_result
 
 
 def test_play_endpoint(client):
@@ -35,3 +38,21 @@ def test_play_endpoint__get_method(client):
     response = client.get(reverse("api:play"))
     assert response.status_code == 405
     assert response.json() == {"detail": 'Method "GET" not allowed.'}
+
+
+@pytest.mark.parametrize(
+    "action,computer,result",
+    [
+        ("rock", "rock", "draw"),
+        ("rock", "paper", "lose"),
+        ("rock", "scissors", "win"),
+        ("paper", "rock", "win"),
+        ("paper", "paper", "draw"),
+        ("paper", "scissors", "lose"),
+        ("scissors", "rock", "lose"),
+        ("scissors", "paper", "win"),
+        ("scissors", "scissors", "draw"),
+    ],
+)
+def test_calculate_result(action, computer, result):
+    assert calculate_result(action, computer) == result
