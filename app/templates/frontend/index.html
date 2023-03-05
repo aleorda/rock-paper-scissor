@@ -4,67 +4,37 @@
 {% block content %}
 <main class="container">
     <header class="text-md-center">
-        <h1 class="p-t-1">Rock Paper Scissor</h1>
+        <h1 class="p-t-1">Choose your game mode</h1>
     </header>
     <hr>
-    <section class="row d-flex justify-content-center">
-        <div class="col-sm-6 col-md-offset-2">
-            <div class="btn-group-flex m-b-1" role="group" aria-label="Player Choice Buttons" id="chooseBtns">
-                <button type="button" class="btn btn-secondary btn-choice" id="btnRock">Rock</button>
-                <button type="button" class="btn btn-secondary btn-choice" id="btnPaper">Paper</button>
-                <button type="button" class="btn btn-secondary btn-choice" id="btnScissors">Scissors</button>
-            </div>
-            <div class="card" id="playerCard1">
-                <img class="card-img-top img-fluid p-a-1"
-                     src="{% static 'images/question_mark.png' %}"
-                     alt="Card image cap" id="playerChoiceImg">
-                <div class="card-footer text-muted">
-                    <strong>Your Choice: </strong><span id="playerChoiceText"></span>
+    <section>
+        <div class="container py-3">
+            {% for game_mode in game_modes %}
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-11">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ game_mode.name }}</h5>
+                            <p class="card-text">
+                            <p class="card-text">Rules:</p>
+                            <ul>
+                                {% with game_mode.description|split:"-" as lines %}
+                                {% for line in lines %}
+                                <li class="rule">{{ line }}</li>
+                                {% endfor %}
+                                {% endwith %}
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="{% url 'frontend:game' game_mode.code %}" class="btn btn-secondary btn-block btnStartGame"
+                           style="height: 100%; align-items: center; display: flex; justify-content: center;">Play</a>
+                    </div>
                 </div>
             </div>
-            <div class="alert alert-info score" role="alert" id="playerScore"><strong>Your Score! </strong><span
-                    class="m-l-1"></span></div>
-        </div>
-        <div class="col-sm-6">
-            <button type="button" class="btn btn-block btn-secondary m-b-1" id="btnPlay">Play</button>
-            <div class="card" id="playerCard2">
-                <img class="card-img-top img-fluid p-a-1"
-                     src="{% static 'images/question_mark.png' %}"
-                     alt="Card image cap" id="pcChoiceImg">
-                <div class="card-footer text-muted">
-                    <strong>PC Choice: </strong><span id="pcChoiceText"></span>
-                </div>
-            </div>
-            <div class="alert alert-info score" role="alert" id="pcScore"><strong>Pc Score! </strong><span
-                    class="m-l-1"></span></div>
-        </div>
-        <div class="col-xs-12 col-md-8 col-md-offset-2 col-md-12">
-            <button type="button" class="btn btn-lg btn-block btn-secondary m-b-1" id="startOver">Start Over</button>
+            {% endfor %}
         </div>
     </section>
 </main>
-
-<div class="modal fade" role="dialog" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title">Round result!</h1>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="alertResult">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-block btn-secondary" data-bs-dismiss="modal" id="nextRound">Next
-                    round
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
-{% block scripts %}
-<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

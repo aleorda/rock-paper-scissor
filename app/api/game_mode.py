@@ -61,10 +61,9 @@ game_modes.register(
             Action(code="paper", name="Paper", strong_to=["rock"]),
             Action(code="scissors", name="Scissors", strong_to=["paper"]),
         ],
-        description="""
-        -> Rock crushes Scissors (✊ > ✌)
-        -> Scissors cuts Paper (✌ > ✋)
-        -> Paper covers Rock (✋ > ✊)
+        description="""Rock crushes Scissors (✊ > ✌)
+        - Scissors cuts Paper (✌ > ✋)
+        - Paper covers Rock (✋ > ✊)
         """,
     )
 )
@@ -80,17 +79,16 @@ game_modes.register(
             Action(code="lizard", name="Lizard", strong_to=["spock", "paper"]),
             Action(code="spock", name="Spock", strong_to=["rock", "scissors"]),
         ],
-        description="""
-        -> Scissors cuts Paper (✌ > ✋)
-        -> Paper covers Rock (✋ > ✊)
-        -> Rock crushes Lizard (✊ > 🦎)
-        -> Lizard poisons Spock (🦎 > 🖖)
-        -> Spock smashes Scissors (🖖 > ✌)
-        -> Scissors decapitates Lizard (✌ > 🦎)
-        -> Lizard eats Paper (🦎 > ✋)
-        -> Paper disproves Spock (✋ > 🖖)
-        -> Spock vaporizes Rock (🖖 > ✊)
-        -> Rock crushes Scissors (✊ > ✌)
+        description="""Scissors cuts Paper (✌ > ✋)
+        - Paper covers Rock (✋ > ✊)
+        - Rock crushes Lizard (✊ > 🦎)
+        - Lizard poisons Spock (🦎 > 🖖)
+        - Spock smashes Scissors (🖖 > ✌)
+        - Scissors decapitates Lizard (✌ > 🦎)
+        - Lizard eats Paper (🦎 > ✋)
+        - Paper disproves Spock (✋ > 🖖)
+        - Spock vaporizes Rock (🖖 > ✊)
+        - Rock crushes Scissors (✊ > ✌)
         """,
     )
 )

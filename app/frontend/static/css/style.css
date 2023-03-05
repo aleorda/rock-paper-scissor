@@ -2,7 +2,6 @@ body {
 	font-size: 14px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	overflow-x: hidden;
-	overflow-y: hidden;
 }
 
 .btn {
@@ -41,4 +40,13 @@ body {
 .score {
     margin-bottom: 1em;
     margin-top: 1em;
+}
+
+.rule {
+    list-style: none;
+}
+
+.btnStartGame {
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
 }
