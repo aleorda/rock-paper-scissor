@@ -2,7 +2,11 @@ from django.urls import reverse
 
 
 def test_play_endpoint(client):
-    response = client.post(reverse("api:play"), json={"action": "rock"})
+    response = client.post(
+        reverse("api:play"),
+        data={"action": "rock"},
+        content_type="application/json",
+    )
     assert response.status_code == 200
     assert response.json() == {
         "action": "rock",
@@ -12,9 +16,13 @@ def test_play_endpoint(client):
 
 
 def test_play_endpoint__invalid_action(client):
-    response = client.post(reverse("api:play"), json={"action": "invalid"})
+    response = client.post(
+        reverse("api:play"),
+        data={"action": "invalid"},
+        content_type="application/json",
+    )
     assert response.status_code == 400
-    assert response.json() == {"action": ["Invalid action"]}
+    assert response.json() == {"action": ['"invalid" is not a valid choice.']}
 
 
 def test_play_endpoint__no_action(client):
