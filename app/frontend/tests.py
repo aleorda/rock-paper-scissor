@@ -1,4 +1,4 @@
 def test_index(client):
     response = client.get("/")
     assert response.status_code == 200
-    assert response.content == b""
+    assert "<title>Rock paper scissor</title>" in response.content.decode("utf-8")
