@@ -13,20 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.http import HttpResponse
-from django.urls import path, include
-from api import urls as api_urls
-from frontend import urls as frontend_urls
+from django.urls import path
 
+from frontend import views
 
-def ping(request):
-    return HttpResponse("pong")
-
+app_name = "frontend"
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("ping/", ping),
-    path("api/", include(api_urls, namespace="api")),
-    path("", include(frontend_urls, namespace="frontend")),
+    path("", views.index, name="index"),
 ]
