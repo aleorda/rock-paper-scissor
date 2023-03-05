@@ -113,10 +113,9 @@ def test_game_modes__registered():
 
     assert (
         classic.description
-        == """
-        -> Rock crushes Scissors (✊ > ✌)
-        -> Scissors cuts Paper (✌ > ✋)
-        -> Paper covers Rock (✋ > ✊)
+        == """Rock crushes Scissors (✊ > ✌)
+        - Scissors cuts Paper (✌ > ✋)
+        - Paper covers Rock (✋ > ✊)
         """
     )
 
@@ -142,17 +141,16 @@ def test_game_modes__registered():
 
     assert (
         the_big_bang_theory.description
-        == """
-        -> Scissors cuts Paper (✌ > ✋)
-        -> Paper covers Rock (✋ > ✊)
-        -> Rock crushes Lizard (✊ > 🦎)
-        -> Lizard poisons Spock (🦎 > 🖖)
-        -> Spock smashes Scissors (🖖 > ✌)
-        -> Scissors decapitates Lizard (✌ > 🦎)
-        -> Lizard eats Paper (🦎 > ✋)
-        -> Paper disproves Spock (✋ > 🖖)
-        -> Spock vaporizes Rock (🖖 > ✊)
-        -> Rock crushes Scissors (✊ > ✌)
+        == """Scissors cuts Paper (✌ > ✋)
+        - Paper covers Rock (✋ > ✊)
+        - Rock crushes Lizard (✊ > 🦎)
+        - Lizard poisons Spock (🦎 > 🖖)
+        - Spock smashes Scissors (🖖 > ✌)
+        - Scissors decapitates Lizard (✌ > 🦎)
+        - Lizard eats Paper (🦎 > ✋)
+        - Paper disproves Spock (✋ > 🖖)
+        - Spock vaporizes Rock (🖖 > ✊)
+        - Rock crushes Scissors (✊ > ✌)
         """
     )
 
