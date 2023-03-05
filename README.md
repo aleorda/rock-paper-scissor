@@ -57,26 +57,44 @@ docker compose build
 docker compose up -d --remove-orphans
 ```
 
+To stop the application, execute:
+```
+docker compose down
+```
+
+### Setup - with Makefile
+
+To start the application, execute:
+```
+make start
+```
+
+To stop the application, execute:
+```
+make stop
+```
+
 ## Tests
 
 ### Unit tests
-
-To run the unit tests, execute:
-```
-poetry run pytest
-```
-
-### Coverage
 
 To run the unit tests with coverage, execute:
 ```
 poetry run coverage run -m pytest
 poetry run coverage report
 ```
+or
+```
+make coverage
+```
 
 For a more detailed report, run:
 ```
 poetry run coverage html
+```
+and open the `htmlcov/index.html` file in your browser, or
+```
+make coverage
 ```
 
 
