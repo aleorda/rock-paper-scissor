@@ -4,7 +4,9 @@ from django.urls import reverse
 from api.views import calculate_result
 
 
-def test_play_endpoint(client):
+def test_play_endpoint(client, monkeypatch):
+    monkeypatch.setattr("api.views.random.choice", lambda _: "scissors")
+
     response = client.post(
         reverse("api:play"),
         data={"action": "rock"},

@@ -1,3 +1,5 @@
+import random
+
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 
@@ -27,6 +29,6 @@ def play(request):
     if not serializer.is_valid():
         return JsonResponse(serializer.errors, status=400)
     action = serializer.validated_data["action"]
-    computer = "scissors"
+    computer = random.choice(["rock", "paper", "scissors"])
     result = calculate_result(action, computer)
     return JsonResponse({"action": action, "result": result, "computer": computer})
