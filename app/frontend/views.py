@@ -3,12 +3,14 @@ from django.template.defaultfilters import register
 
 from api.game_mode import game_modes
 
-@register.filter(name='split')
+
+@register.filter(name="split")
 def split(value, key):
     """
-        Returns the value turned into a list.
+    Returns the value turned into a list.
     """
     return value.split(key)
+
 
 def index(request):
     return render(
