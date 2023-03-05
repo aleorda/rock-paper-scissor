@@ -21,6 +21,7 @@ def calculate_result(action, computer):
         if computer == "paper":
             return "win"
         return "lose"
+    return "invalid"
 
 
 @api_view(["POST"])

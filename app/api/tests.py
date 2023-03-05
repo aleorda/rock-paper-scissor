@@ -54,6 +54,7 @@ def test_play_endpoint__get_method(client):
         ("scissors", "rock", "lose"),
         ("scissors", "paper", "win"),
         ("scissors", "scissors", "draw"),
+        ("invalid", "scissors", "invalid"),
     ],
 )
 def test_calculate_result(action, computer, result):
