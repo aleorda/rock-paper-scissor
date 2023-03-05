@@ -14,7 +14,3 @@ USER nobody
 
 # will become mountpoint of our code
 WORKDIR /app
-
-# Collect static files
-RUN poetry run python manage.py collectstatic --noinput
-

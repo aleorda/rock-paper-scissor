@@ -37,16 +37,11 @@ It has 2 different modes:
 - Docker & Docker Compose
 - Make
 
-### Setup - without Docker
+### Setup - in local
 
 To install the dependencies, run:
 ```
 poetry install
-```
-
-Collect static files:
-```
-poetry run python app/manage.py collectstatic
 ```
 
 To run the application, execute:
