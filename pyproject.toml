@@ -9,6 +9,7 @@ packages = [{include = "rock_paper_scissor"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^4.1.7"
+django-environ = "^0.10.0"
 
 
 [build-system]
