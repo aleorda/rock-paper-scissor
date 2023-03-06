@@ -75,6 +75,9 @@ jobs:
         with:
           poetry-version: ${{ env.poetry-version }}
 
+      - name: Copy .env
+        run: cp .env.github .env
+
       - run: poetry config virtualenvs.in-project true
       - run: poetry install
 
